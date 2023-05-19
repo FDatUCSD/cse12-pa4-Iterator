@@ -1,19 +1,20 @@
-
-/**
+/*
  * Name: Farris Danish
  * Email: fbinsyahrilakmar@ucsd.edu
  * PID: A17401247
  * Sources used: Write-up
- * 
+ *
  * This file contains tests custom unit tests for MyLinkedList methods
  */
 
 import static org.junit.Assert.*;
 
 import java.util.NoSuchElementException;
-
 import org.junit.*;
 
+/**
+ * Contains tests for MyLinkedListIterator
+ */
 public class MyListIteratorCustomTester {
 
     private MyLinkedList listLen1, listLen2;
@@ -46,8 +47,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 1;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = true;
-        assertThrows("Should throw NoSuchElementException",
-                NoSuchElementException.class, () -> listLen1Iter.next());
+        assertThrows(
+            "Should throw NoSuchElementException",
+            NoSuchElementException.class,
+            () -> listLen1Iter.next()
+        );
     }
 
     /**
@@ -61,9 +65,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = true;
-        assertThrows("Should throw NoSuchElementException",
-                NoSuchElementException.class,
-                () -> listLen1Iter.previous());
+        assertThrows(
+            "Should throw NoSuchElementException",
+            NoSuchElementException.class,
+            () -> listLen1Iter.previous()
+        );
     }
 
     /**
@@ -76,9 +82,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = false;
-        assertThrows("Should throw NullPointerException",
-                NullPointerException.class,
-                () -> listLen1Iter.add(null));
+        assertThrows(
+            "Should throw NullPointerException",
+            NullPointerException.class,
+            () -> listLen1Iter.add(null)
+        );
     }
 
     /**
@@ -91,9 +99,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = false;
-        assertThrows("Should throw IllegalStateException",
-                IllegalStateException.class,
-                () -> listLen1Iter.set("hello"));
+        assertThrows(
+            "Should throw IllegalStateException",
+            IllegalStateException.class,
+            () -> listLen1Iter.set("hello")
+        );
     }
 
     /**
@@ -106,9 +116,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = true;
-        assertThrows("Should throw NullPointerException when setting null",
-                NullPointerException.class,
-                () -> listLen1Iter.set(null));
+        assertThrows(
+            "Should throw NullPointerException when setting null",
+            NullPointerException.class,
+            () -> listLen1Iter.set(null)
+        );
     }
 
     /**
@@ -121,9 +133,11 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = false;
-        assertThrows("Should throw IllegalStateException",
-                IllegalStateException.class,
-                () -> listLen1Iter.remove());
+        assertThrows(
+            "Should throw IllegalStateException",
+            IllegalStateException.class,
+            () -> listLen1Iter.remove()
+        );
     }
 
     /**
@@ -136,8 +150,10 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 1;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = true;
-        assertFalse("Should return false when at the end of list",
-                listLen1Iter.hasNext());
+        assertFalse(
+            "Should return false when at the end of list",
+            listLen1Iter.hasNext()
+        );
     }
 
     /**
@@ -145,14 +161,15 @@ public class MyListIteratorCustomTester {
      */
     @Test
     public void testHasPreviousStart() {
-
         listLen1Iter.left = listLen1.head;
         listLen1Iter.right = listLen1.head.getNext();
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = false;
-        assertFalse("Should return false when at the start of list",
-                listLen1Iter.hasPrevious());
+        assertFalse(
+            "Should return false when at the start of list",
+            listLen1Iter.hasPrevious()
+        );
     }
 
     /**
@@ -160,14 +177,16 @@ public class MyListIteratorCustomTester {
      */
     @Test
     public void testPreviousIndexStart() {
-
         listLen1Iter.left = listLen1.head;
         listLen1Iter.right = listLen1.head.getNext();
         listLen1Iter.idx = 0;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = false;
-        assertEquals("returns -1 if iterator is at the start",
-                -1, listLen1Iter.previousIndex());
+        assertEquals(
+            "returns -1 if iterator is at the start",
+            -1,
+            listLen1Iter.previousIndex()
+        );
     }
 
     /**
@@ -180,7 +199,10 @@ public class MyListIteratorCustomTester {
         listLen1Iter.idx = 1;
         listLen1Iter.forward = true;
         listLen1Iter.canRemoveOrSet = true;
-        assertEquals("Should return the size of the list",
-                listLen1.size(), listLen1Iter.nextIndex());
+        assertEquals(
+            "Should return the size of the list",
+            listLen1.size(),
+            listLen1Iter.nextIndex()
+        );
     }
 }
